@@ -761,6 +761,10 @@ class Manager
                         ));
                     }
 
+                    if($migration instanceof AbstractMigrationWitSkipping && $migration->getTargetDatabase() !== $environment){
+                        continue;
+                    }
+
                     $versions[$version] = $migration;
                 } else {
                     if ($this->getOutput()->getVerbosity() >= OutputInterface::VERBOSITY_DEBUG) {
